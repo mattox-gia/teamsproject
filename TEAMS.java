@@ -37,9 +37,47 @@ public class TEAMS{
 
         //############## MAIN MENU STARTS HERE ##############
         int ans = 0;
+        String s = "";
 
         while(ans != -1){
-            System.out.println("1. ");
+            System.out.println("1.) Add Student");
+            System.out.println("2.) Add Teacher");
+            System.out.println("3.) Add Course");
+            System.out.println("4.) Edit Student");
+            System.out.println("5.) List Students");
+            System.out.println("6.) List Courses");
+            System.out.println("7.) Search for Student");
+            System.out.println("0.) Exit");
+            System.out.println();
+            System.out.println("Choice: ");
+            ans = sc.nextInt();
+            sc.nextLine();
+
+            if(ans == 1){
+                students.add(s);
+            }
+            else if(ans == 2){
+                System.out.println("add teacher");
+            }
+            else if(ans == 3){
+                System.out.println("add course");
+            }
+            else if(ans == 4){
+                System.out.println("edit student");
+            }
+            else if(ans == 5){
+                System.out.print(students);
+            }
+            else if(ans == 6){
+                System.out.println("list courses");
+            }
+            else if(ans == 7){
+                System.out.println("Search Student");
+            }
+            else if(ans == 0){
+                System.out.println("exit");
+            }
+            
         }
         
 
