@@ -37,8 +37,8 @@ public class TEAMS{
 
         //############## MAIN MENU STARTS HERE ##############
         int ans = 0;
-        String s = "";
 
+        
         while(ans != -1){
             System.out.println("1.) Add Student");
             System.out.println("2.) Add Teacher");
@@ -54,7 +54,8 @@ public class TEAMS{
             sc.nextLine();
 
             if(ans == 1){
-                students.add(s);
+                Student s = new Student();
+                addStudent(s);
             }
             else if(ans == 2){
                 System.out.println("add teacher");
@@ -64,6 +65,24 @@ public class TEAMS{
             }
             else if(ans == 4){
                 System.out.println("edit student");
+                System.out.println("Pick a Class");
+                listCourses();
+                System.out.println();
+                ans = sc.nextInt();
+                sc.NextLine();
+                if(ans > -1 && ans < courses.size()){
+                    Course c = courses.get(ans).clone();
+                    System.out.println("Enter grade for the course:");
+                    int grade = sc.nextInt();
+                    c.setGrade(grade);
+                    sc.nextLine();
+                    System.out.println("Currently taking it (y/n)?");
+                    String yesNo = sc.nextLine();
+                    if(yesNo.equals("y")){
+                        c.setCurrent(current: true);
+                    }
+                    student.addCourse(c);
+                }
             }
             else if(ans == 5){
                 System.out.print(students);
