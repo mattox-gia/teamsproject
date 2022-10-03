@@ -4,13 +4,13 @@ import java.util.ArrayList;
 public class Student implements Serializable {
     private String name;
     private int gradeLevel;
-    private ArrayList<Course>courses;
-    courses = new ArrayList<>();
+    private ArrayList<Course> courses;
+    
 
-public Student(String name, int gradeLevel, ArrayList<Course> courses){
-    this.name = name;
-    this.gradeLevel = gradeLevel;
-    this.courses = courses;
+public Student(String name, int gradeLevel){
+    name = name;
+    gradeLevel = gradeLevel;
+    courses = new ArrayList<>();
 }
 
 public String addStudent(s){

@@ -43,7 +43,7 @@ public class TEAMS{
             System.out.println("1.) Add Student");
             System.out.println("2.) Add Teacher");
             System.out.println("3.) Add Course");
-            System.out.println("4.) Edit Student");
+            System.out.println("4.) Edit Student"); //sub choices
             System.out.println("5.) List Students");
             System.out.println("6.) List Courses");
             System.out.println("7.) Search for Student");
@@ -54,18 +54,51 @@ public class TEAMS{
             sc.nextLine();
 
             if(ans == 1){
-                Student s = new Student();
-                addStudent(s);
+                System.out.println("Enter name: ");
+                String name = sc.nextLine();
+                System.out.println("Get grade");
+                int gradeLevel = sc.nextInt();
+                
+                Student s = new Student(name, gradeLevel);
+                students.add(s);
+
+
             }
-            else if(ans == 2){
+            else if(ans == 2){ //adding teacher
                 System.out.println("add teacher");
+                System.out.println("Enter subject: ");
+                String subject = sc.nextLine();
+
+                for(int i=0; i< teachers.size();i++){
+                    System.out.print(i+" "+teachers.get(i));
+                }
+
+                System.out.println("Choice:");
+                int choice = sc.nextInt();
+                sc.nextLine();
+
+                if(choice > -1 && choice < teachers.size()){
+                    Teacher t = teachers.get(choice);
+                    Course c = new Course(subject);
+                    courses.add(c);
+                }
+
+                
             }
-            else if(ans == 3){
+            else if(ans == 3){ // adding course
                 System.out.println("add course");
             }
             else if(ans == 4){
-                System.out.println("edit student");
+                System.out.println("edit student"); 
+         
+
+                    System.out.println(" 1. Add Course");
+                    System.out.println("2. Remove Course");
+                    System.out.println("3. Modify name");
+                    System.out.print(" 4. Modify grade level");
+                    System.out.println("edit student"); 
                 System.out.println("Pick a Class");
+                //IF CHOOSES OPTION 1 and have a thing that asks for their option and scans it
                 listCourses();
                 System.out.println();
                 ans = sc.nextInt();
@@ -82,12 +115,14 @@ public class TEAMS{
                         c.setCurrent(current: true);
                     }
                     student.addCourse(c);
+                    //for loop
+                    Student s = students.get(choice);
                 }
             }
-            else if(ans == 5){
+            else if(ans == 5){ //list students
                 System.out.print(students);
             }
-            else if(ans == 6){
+            else if(ans == 6){ //list courses
                 System.out.println("list courses");
             }
             else if(ans == 7){
