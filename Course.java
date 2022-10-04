@@ -13,7 +13,11 @@ public class Course implements Serializable, Cloneable {
         this.current = current;
 
     }
-    
+
+    public Course(String subject, Teacher teacher){
+        this.subject = subject;
+        this.teacher = teacher;
+    }
     public void setSubject(String s){
         subject = s;
     }
@@ -40,6 +44,10 @@ public class Course implements Serializable, Cloneable {
 
     public String toString(){
         return subject+teacher+grade;
+    }
+    
+    public void setCurrent(boolean c){
+        current = c;
     }
 
     public Course clone() {

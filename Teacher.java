@@ -2,13 +2,13 @@ import java.io.Serializable;
 
 public class Teacher implements Serializable {
     private String teacher_name;
-    private String subject;
+    
     private int yearsOfExperience;
 
 
-public Teacher(String teacher_name, String subject, int yearsOfExperience){
+public Teacher(String teacher_name, int yearsOfExperience){
     this.teacher_name = teacher_name;
-    this.subject = subject;
+  
     this.yearsOfExperience = yearsOfExperience;
 }
 
@@ -28,12 +28,5 @@ public int getYearsOfExp(){
     return yearsOfExperience;
 }
 
-public void addCourse(String course){
-    System.out.print("add course");
-}
-
-public void removeCourse(String course){
-    System.out.print("remove course");
-}
 
 }

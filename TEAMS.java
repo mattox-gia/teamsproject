@@ -5,13 +5,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TEAMS{
+public class TEAMS {
     static ArrayList<Student> students;
     static ArrayList<Teacher> teachers;
     static ArrayList<Course> courses;
 
     static Scanner sc = new Scanner(System.in);
-
 
     public static void main(String[] args) {
 
@@ -48,6 +47,8 @@ public class TEAMS{
             System.out.println("6.) List Courses");
             System.out.println("7.) Search for Student");
             System.out.println("0.) Exit");
+
+
             System.out.println();
             System.out.println("Choice: ");
             ans = sc.nextInt();
@@ -69,89 +70,127 @@ public class TEAMS{
                 String teacherName = sc.nextLine();
                 System.out.println("Enter years of experience: ");
                 int yearsOfExperience = sc.nextInt();
-                System.out.println("Enter subject: ");
-                String subject = sc.nextLine();
+                
+                Teacher t = new Teacher(teacherName, yearsOfExperience);
+                teachers.add(t);
 
-                for(int i=0; i< teachers.size();i++){
-                    System.out.print(i+" "+teachers.get(i));
-                }
 
-                System.out.println("Choice:");
-                int choice = sc.nextInt();
-                sc.nextLine();
-
-                if(choice > -1 && choice < teachers.size()){
-                    Teacher t = teachers.get(choice);
-                    Course c = new Course(subject);
-                    courses.add(c);
-                }
 
                 
             }
             else if(ans == 3){ // adding course
-                System.out.println("add course");
+                System.out.println("What subject: ");
+                String subject = sc.nextLine();
+                System.out.println("Pik a teacher: ");
+                for(int i=0; i< teachers.size();i++){
+                    System.out.print(i+" "+teachers.get(i));
+                }
+                System.out.println("Choice");
+                int choice = sc.nextInt();
+                sc.nextLine();
+                if(choice > -1 && choice < teachers.size()){
+                    Teacher t = teachers.get(choice);
+                    Course c = new Course(subject, t);
+                    courses.add(c);
+                }
+
+                
+
             }
             else if(ans == 4){
                 System.out.println("edit student"); 
-         
+                for (int i =0; i<students.size(); i++){
+                    System.out.println(i+" "+students.get(i));
+                }
+                System.out.println("Choice:");
+                int choice = sc.nextInt();
+                sc.nextLine();
+                Student student = students.get(choice);
 
-                    System.out.println(" 1. Add Course");
-                    System.out.println("2. Remove Course");
-                    System.out.println("3. Modify name");
-                    System.out.print(" 4. Modify grade level");
-                    System.out.println("edit student"); 
-                System.out.println("Pick a Class");
-                //IF CHOOSES OPTION 1 and have a thing that asks for their option and scans it
-                listCourses();
-                System.out.println();
-                ans = sc.nextInt();
-                sc.NextLine();
-                if(ans > -1 && ans < courses.size()){
-                    Course c = courses.get(ans).clone();
-                    System.out.println("Enter grade for the course:");
-                    int grade = sc.nextInt();
-                    c.setGrade(grade);
+                System.out.println(" 1. Add Course");
+                System.out.println("2. Remove Course");
+                System.out.println("3. Modify name");
+                System.out.print(" 4. Modify grade level");
+                    
+                    choice = sc.nextInt();
                     sc.nextLine();
-                    System.out.println("Currently taking it (y/n)?");
-                    String yesNo = sc.nextLine();
-                    if(yesNo.equals("y")){
-                        c.setCurrent(current: true);
-                    }
-                    student.addCourse(c);
-
                 if(ans == 1){
-                    System.out.print("adding cvourse to individual student");
-                }
-                    for(int i=0; i< teachers.size();i++){
-                        System.out.print(i+" "+teachers.get(i));
-                    }
-    
-                    System.out.println("Choice:");
-                    int choice = sc.nextInt();
+                    System.out.println("Pick a Class");
+                    for (int i =0; i<courses.size(); i++){
+                        System.out.println(i+" "+courses.get(i));}                
+                    System.out.println();
+                    choice = sc.nextInt();
                     sc.nextLine();
-                        Student s = students.get(choice);
+                    
+                    if(choice > -1 && choice < courses.size()){
+                        Course c = courses.get(choice).clone();
+                        System.out.println("Enter grade for the course:");
+                        int grade = sc.nextInt();
+                        c.setGrade(grade);
+                        sc.nextLine();
+                        System.out.println("Currently taking it (y/n)?");
+                        String yesNo = sc.nextLine();
+                        if(yesNo.equals("y")){
+                            c.setCurrent(true);
+                        }
+                        student.addCourse(c);
+                    }
+
+
+                }else if(ans == 2){
+                
+                    ArrayList<Course> courses = student.getCourses();
+                    System.out.println("Choose course: ");
+                    for(int i = 0; i<courses.size();i++){
+                        System.out.println(i+" "+courses.get(i));
+                    }
+                    System.out.println("Choice");
+                    choice = sc.nextInt();
+                    sc.nextLine();
+                    Course c = courses.get(choice);
+                    student.removeCourse(c);
+                    
+                }else if(ans == 3){
+                    System.out.println("New name: ");
+                    String name = sc.nextLine();
+                    
+                    student.setName(name);
+
+                }else if (ans == 4){
+                    System.out.println("New grade level :");
+                    int grade = sc.nextInt();
+                    sc.nextLine();
+
+                    student.setGradeLevel(grade);
+
                 }
-            }
+            
             else if(ans == 5){ //list students
-                System.out.print(students);
+                for(int i = 0; i<students.size();i++){
+                    System.out.println(i+" "+students.get(i));
+                }
             }
             else if(ans == 6){ //list courses
-                System.out.println("list courses");
+                
+                for (int i =0; i<courses.size(); i++){
+                    System.out.println(i+" "+courses.get(i));
+                }
             }
             else if(ans == 7){
-                System.out.println("Search Student");
+                
             }
             else if(ans == 0){
                 System.out.println("exit");
             }
             
+            }
         }
         
 
     }
 
-    //#### DO NOT CHANGE THIS FUNCTION ####
-    public static void saveData()throws Exception{
+    // #### DO NOT CHANGE THIS FUNCTION ####
+    public static void saveData() throws Exception {
         FileOutputStream f1 = new FileOutputStream("students");
         ObjectOutputStream os = new ObjectOutputStream(f1);
         os.writeObject(students);
@@ -171,10 +210,10 @@ public class TEAMS{
         f3.close();
     }
 
-    //#### DO NOT CHANGE THIS FUNCTION ####
-    public static Object loadData(String name) throws Exception{
+    // #### DO NOT CHANGE THIS FUNCTION ####
+    public static Object loadData(String name) throws Exception {
         FileInputStream fis = new FileInputStream(name);
-        ObjectInputStream ois = new  ObjectInputStream(fis);   
+        ObjectInputStream ois = new ObjectInputStream(fis);
         Object o = ois.readObject();
         ois.close();
         fis.close();

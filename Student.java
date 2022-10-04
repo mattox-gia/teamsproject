@@ -35,15 +35,35 @@ public double calculateGPA(){
 }
 
 public String getBestClass(){
-    return "y";
+    
+
+ 
+    if(courses.size() == 0){
+        return null;
+    }
+    Course c = courses.get(0);
+    for(int i = 0; i<courses.size();i++){
+        if( c.getGrade()<courses.get(i).getGrade()){
+            c = courses.get(i);
+        }
+    }
+    return c;
+        
+}
+    
+   
+//for loop with courses and return one with highest grade}
+
+
+public void removeCourse(Course c){
+    courses.remove(c);
 }
 
-public void addCourse(String c){
-    System.out.println("y");
+public void addCourse(Course c){
+    courses.add(c);
 }
-
-public void removeCourse(String c){
-    System.out.println("y");
+public ArrayList<Course> getCourses(){
+    return courses;
 }
 
 public String toString(){
