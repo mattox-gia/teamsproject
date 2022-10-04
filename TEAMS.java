@@ -54,9 +54,9 @@ public class TEAMS{
             sc.nextLine();
 
             if(ans == 1){
-                System.out.println("Enter name: ");
+                System.out.println("Enter Student Name: ");
                 String name = sc.nextLine();
-                System.out.println("Get grade");
+                System.out.println("Enter Grade Level: ");
                 int gradeLevel = sc.nextInt();
                 
                 Student s = new Student(name, gradeLevel);
@@ -65,7 +65,10 @@ public class TEAMS{
 
             }
             else if(ans == 2){ //adding teacher
-                System.out.println("add teacher");
+                System.out.println("Enter Teacher Name: ");
+                String teacherName = sc.nextLine();
+                System.out.println("Enter years of experience: ");
+                int yearsOfExperience = sc.nextInt();
                 System.out.println("Enter subject: ");
                 String subject = sc.nextLine();
 
@@ -115,8 +118,18 @@ public class TEAMS{
                         c.setCurrent(current: true);
                     }
                     student.addCourse(c);
-                    //for loop
-                    Student s = students.get(choice);
+
+                if(ans == 1){
+                    System.out.print("adding cvourse to individual student");
+                }
+                    for(int i=0; i< teachers.size();i++){
+                        System.out.print(i+" "+teachers.get(i));
+                    }
+    
+                    System.out.println("Choice:");
+                    int choice = sc.nextInt();
+                    sc.nextLine();
+                        Student s = students.get(choice);
                 }
             }
             else if(ans == 5){ //list students

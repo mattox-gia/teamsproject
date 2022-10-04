@@ -6,16 +6,40 @@ public class Course implements Serializable, Cloneable {
     private int grade;
     private boolean current;
 
-    public Course(String subject, String teacher, int grade, boolean current){
-        subject = subject;
-        teacher = teacher;
-        grade = grade;
-        current = current;
+    public Course(String subject, Teacher teacher, int grade, boolean current){
+        this.subject = subject;
+        this.teacher = teacher;
+        this.grade = grade;
+        this.current = current;
 
     }
+    
+    public void setSubject(String s){
+        subject = s;
+    }
 
-    public toString(String subject, String teacher, int grade){
-        return ...
+    public String getSubject(){
+        return subject;
+    }
+
+    public void setTeacher(Teacher t){
+        teacher = t;
+    }
+
+    public Teacher getTeacher(){
+        return teacher;
+    }
+
+    public void setGrade(int g){
+        grade = g;
+    }
+
+    public int getGrade(){
+        return grade;
+    }
+
+    public String toString(){
+        return subject+teacher+grade;
     }
 
     public Course clone() {
