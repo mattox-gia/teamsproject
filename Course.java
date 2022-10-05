@@ -42,12 +42,14 @@ public class Course implements Serializable, Cloneable {
         return grade;
     }
 
-    public String toString(){
-        return subject+teacher+grade;
-    }
+
     
     public void setCurrent(boolean c){
         current = c;
+    }
+    
+    public String toString(){
+        return subject+" by "+teacher+" "+grade;
     }
 
     public Course clone() {

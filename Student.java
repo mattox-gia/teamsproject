@@ -15,7 +15,7 @@ public Student(String name, int gradeLevel){
 }
 
 public void setName(String n){
-    System.out.println("y");
+    name = n;
 }
 
 public String getName(){
@@ -34,9 +34,7 @@ public double calculateGPA(){
     return gpa;
 }
 
-public String getBestClass(){
-    
-
+public Course getBestClass(){
  
     if(courses.size() == 0){
         return null;

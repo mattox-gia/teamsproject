@@ -28,5 +28,8 @@ public int getYearsOfExp(){
     return yearsOfExperience;
 }
 
+public String toString(){
+    return "Name: "+teacher_name;
+}
 
 }

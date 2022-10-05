@@ -70,6 +70,7 @@ public class TEAMS {
                 String teacherName = sc.nextLine();
                 System.out.println("Enter years of experience: ");
                 int yearsOfExperience = sc.nextInt();
+                sc.nextLine();
                 
                 Teacher t = new Teacher(teacherName, yearsOfExperience);
                 teachers.add(t);
@@ -81,11 +82,11 @@ public class TEAMS {
             else if(ans == 3){ // adding course
                 System.out.println("What subject: ");
                 String subject = sc.nextLine();
-                System.out.println("Pik a teacher: ");
+                System.out.println("Pick a teacher: ");
                 for(int i=0; i< teachers.size();i++){
-                    System.out.print(i+" "+teachers.get(i));
+                    System.out.println(i+" "+teachers.get(i));
                 }
-                System.out.println("Choice");
+                System.out.println("Choice: ");
                 int choice = sc.nextInt();
                 sc.nextLine();
                 if(choice > -1 && choice < teachers.size()){
@@ -102,7 +103,7 @@ public class TEAMS {
                 for (int i =0; i<students.size(); i++){
                     System.out.println(i+" "+students.get(i));
                 }
-                System.out.println("Choice:");
+                System.out.println("Choice: 1");
                 int choice = sc.nextInt();
                 sc.nextLine();
                 Student student = students.get(choice);
@@ -112,9 +113,9 @@ public class TEAMS {
                 System.out.println("3. Modify name");
                 System.out.print(" 4. Modify grade level");
                     
-                    choice = sc.nextInt();
+                    int a = sc.nextInt();
                     sc.nextLine();
-                if(ans == 1){
+                if(a == 1){
                     System.out.println("Pick a Class");
                     for (int i =0; i<courses.size(); i++){
                         System.out.println(i+" "+courses.get(i));}                
@@ -137,57 +138,66 @@ public class TEAMS {
                     }
 
 
-                }else if(ans == 2){
+                }else if(a == 2){
                 
                     ArrayList<Course> courses = student.getCourses();
                     System.out.println("Choose course: ");
                     for(int i = 0; i<courses.size();i++){
                         System.out.println(i+" "+courses.get(i));
                     }
-                    System.out.println("Choice");
+                    System.out.println("Choice: ");
                     choice = sc.nextInt();
                     sc.nextLine();
                     Course c = courses.get(choice);
                     student.removeCourse(c);
                     
-                }else if(ans == 3){
+                }else if(a == 3){
                     System.out.println("New name: ");
                     String name = sc.nextLine();
                     
                     student.setName(name);
 
-                }else if (ans == 4){
-                    System.out.println("New grade level :");
+                }else if (a == 4){
+                    System.out.println("New grade level: ");
                     int grade = sc.nextInt();
                     sc.nextLine();
 
                     student.setGradeLevel(grade);
 
                 }
-            
-            else if(ans == 5){ //list students
+            }else if(ans == 5){ //list students
+
                 for(int i = 0; i<students.size();i++){
                     System.out.println(i+" "+students.get(i));
                 }
             }
+
             else if(ans == 6){ //list courses
                 
                 for (int i =0; i<courses.size(); i++){
                     System.out.println(i+" "+courses.get(i));
                 }
             }
-            else if(ans == 7){
-                
+            else if(ans == 7){ //search for student
+                System.out.print("Enter Student Name: ");
+                String st = sc.nextLine();
+                // for(int i = 0; i<students.size();i++){
+                //     if(students.get(i) == st){
+                //         return students;
+                //     }
+                // }
             }
-            else if(ans == 0){
+            else if(ans == 0){ //exit
                 System.out.println("exit");
+   
+                }
             }
             
-            }
+            
         }
         
 
-    }
+    
 
     // #### DO NOT CHANGE THIS FUNCTION ####
     public static void saveData() throws Exception {
