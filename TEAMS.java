@@ -35,10 +35,10 @@ public class TEAMS {
 
 
         //############## MAIN MENU STARTS HERE ##############
-        int ans = 0;
+        int ans = -1;
 
         
-        while(ans != -1){
+        while(ans != 0){
             System.out.println("1.) Add Student");
             System.out.println("2.) Add Teacher");
             System.out.println("3.) Add Course");
@@ -179,17 +179,33 @@ public class TEAMS {
                 }
             }
             else if(ans == 7){ //search for student
+                boolean studentFound =false;
                 System.out.print("Enter Student Name: ");
                 String st = sc.nextLine();
-                // for(int i = 0; i<students.size();i++){
-                //     if(students.get(i) == st){
-                //         return students;
-                //     }
-                // }
+                for(int i = 0; i<students.size();i++){
+                    Student student = students.get(i);
+                    if(student.getName().equals(st)){
+                        System.out.println(student);
+                        studentFound =true;
+                    }
+                    
+
+                }
+
+                if(!studentFound){
+                    System.out.println("No Student Found");
+                }
             }
             else if(ans == 0){ //exit
-                System.out.println("exit");
-   
+                if(ans ==0){
+                    try{
+                        saveData();
+                    }
+                    catch(Exception e){
+
+                    }
+                }
+                
                 }
             }
             

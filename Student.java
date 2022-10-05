@@ -6,6 +6,7 @@ public class Student implements Serializable {
     private int gradeLevel;
     private ArrayList<Course> courses;
     private double gpa;
+
     
 
 public Student(String name, int gradeLevel){
@@ -31,7 +32,33 @@ public int getGradeLevel(){
 }
 
 public double calculateGPA(){
-    return gpa;
+    if(courses.size() == 0){
+        return 0;
+    }
+    
+    double points = 0;
+    for(int i=0;i<courses.size();i++){
+        Course c = courses.get(i);
+        int grade = c.getGrade();
+        if(grade>=90){
+            points+=4;
+        }
+        else if(grade>=80){
+            points+=3;
+
+        }
+        else if(grade>=75){
+            points+=2;
+        }
+        else if(grade>=70){
+            points+=1;
+        }
+
+        
+    }
+
+    return gpa = points/courses.size();
+    
 }
 
 public Course getBestClass(){
@@ -65,7 +92,12 @@ public ArrayList<Course> getCourses(){
 }
 
 public String toString(){
-    return "Name"+name+"\nGrade Level: "+gradeLevel+"\nGPA: "+gpa;
+    Course  c = getBestClass();
+    if( c == null){
+        return "Name"+name+"\nGrade Level: "+gradeLevel+"\nGPA: "+calculateGPA();
+    }else{
+        return "Name"+name+"\nGrade Level: "+gradeLevel+"\nGPA: "+calculateGPA() + " Best Class:"+c;
+    }
 }
 
 // public String addStudent(s){
