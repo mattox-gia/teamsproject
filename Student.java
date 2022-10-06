@@ -94,9 +94,9 @@ public ArrayList<Course> getCourses(){
 public String toString(){
     Course  c = getBestClass();
     if( c == null){
-        return "Name"+name+"\nGrade Level: "+gradeLevel+"\nGPA: "+calculateGPA();
+        return "Name: "+name+"\nGrade Level: "+gradeLevel+"\nGPA: "+calculateGPA();
     }else{
-        return "Name"+name+"\nGrade Level: "+gradeLevel+"\nGPA: "+calculateGPA() + " Best Class:"+c;
+        return "Name: "+name+"\nGrade Level: "+gradeLevel+"\nGPA: "+calculateGPA() + " Best Class: "+c;
     }
 }
 
