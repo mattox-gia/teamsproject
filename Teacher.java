@@ -29,7 +29,7 @@ public int getYearsOfExp(){
 }
 
 public String toString(){
-    return "Name: "+teacher_name;
+    return teacher_name;
 }
 
 }
